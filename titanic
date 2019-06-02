@@ -1,0 +1,15 @@
+import numpy as np
+import pandas as pd
+
+
+def main():
+    titanic = pd.read_csv("file/titanic_train.csv")
+    survival = titanic.pivot_table(index="Pclass", values="Survived", aggfunc=np.mean)
+    print(survival)
+    survival = titanic.pivot_table(index="Pclass", values="Age", aggfunc=np.mean)
+    print(survival)
+    survival = titanic.pivot_table(index="Embarked", values=["Fare", "Survived"], aggfunc=np.sum)
+    print(survival)
+
+if __name__ == '__main__':
+    main()
